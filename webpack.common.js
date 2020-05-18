@@ -13,9 +13,9 @@
      new HtmlWebpackPlugin({
        title: 'Production'
      }),
-     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest'
-    })
+    //  new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest'
+    // })
    ],
    output: {
      //  filename: '[name].bundle.js',
