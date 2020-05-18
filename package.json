@@ -1,0 +1,36 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "this is description",
+  "keywords": "它是一个字符串数组。这可以帮助人们发现您的软件包（如中所列）npm search",
+  "homepage": "项目首页的网址",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "watch": "webpack --watch",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "haozi",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.3",
+    "csv-loader": "^3.0.3",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "sideEffects": [
+    "*.js",
+    "*.css"
+  ]
+}
