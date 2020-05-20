@@ -7,19 +7,28 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --open",
     "watch": "webpack --watch",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack"
   },
+  "sideEffects": [
+    "@babel/polly-fill",
+    "*.less",
+    "*.css",
+    "*.js",
+    "./src/some-side-effectful-file.js"
+  ],
   "author": "haozi",
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
     "csv-loader": "^3.0.3",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "style-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
@@ -28,9 +37,5 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
-  },
-  "sideEffects": [
-    "*.js",
-    "*.css"
-  ]
+  }
 }

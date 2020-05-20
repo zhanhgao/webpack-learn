@@ -4,20 +4,29 @@ const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin')
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
-  // entry: './src/index.js',
   entry: {
     app: './src/index.js',
-    // print: './src/index.js',
   },
+  // mode: 'development',//development  production
   devtool: 'inline-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        NODE_ENV:'production'
+      }
+    }),
+    // new UglifyJsPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Output Management'
     }),
     new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin("styles.css"),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
@@ -30,12 +39,20 @@ module.exports = {
     // filename: 'bundle.js'
   },
   module: {
-    rules: [{
+    rules: [
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     'css-loader'
+      //   ]
+      // },
+      {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader"
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
