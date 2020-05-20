@@ -5,14 +5,13 @@ const {
 } = require('clean-webpack-plugin')
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
   entry: {
     app: './src/index.js',
   },
-  // mode: 'development',//development  production
+  // mode: 'production',//development  production
   devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
@@ -26,7 +25,6 @@ module.exports = {
       title: 'Output Management'
     }),
     new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin("styles.css"),
     new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
@@ -40,19 +38,12 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     'css-loader'
-      //   ]
-      // },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
