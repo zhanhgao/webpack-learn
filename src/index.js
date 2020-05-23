@@ -25,4 +25,5 @@ let foo=()=>{
     return c        //sharking
   }
   baz();
+  export default baz;
   
